@@ -22,9 +22,9 @@ class VisitorsController < ApplicationController
 
  def add_image_s3
    #Test if collection exists
-   service = AWS::S3.new(:access_key_id => ,:secret_access_key => )
+   service = AWS::S3.new(region: 'eu-west-1')
 
-   obj = s3.bucket('jcristanreko01').object('key')
+   obj = s3.bucket('jcristanreko01').object('javier.jpg')
    image=params[:img]
    obj.upload_file(image)
    
