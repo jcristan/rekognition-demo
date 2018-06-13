@@ -20,9 +20,17 @@ class VisitorsController < ApplicationController
    render :json => response.face_records.to_json
   end
 
-  def add_user
-    #code
+ def add_image_s3
+   #Test if collection exists
+   service = AWS::S3.new(:access_key_id => AKIAISIWUELMKBHVCN7A,:secret_access_key => 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)
+
+   obj = s3.bucket('jcristanreko01').object('key')
+   image=params[:img]
+   obj.upload_file(image)
+   
   end
+    #code
+
 
   def reset
     client = Aws::Rekognition::Client.new()
