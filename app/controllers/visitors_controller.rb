@@ -7,7 +7,8 @@ class VisitorsController < ApplicationController
    image=params[:img]
    s3 = Aws::S3::Resource.new(region: 'eu-west-1')
    obj = s3.bucket('jcristanreko01').object('javier4.jpg')
-   
+   decoded_image =Base64.decode64(image)
+   obj.upload_file(decoded_image)
 
    image=image.gsub("data:image/jpeg;base64,", "")
    name = params[:name]
@@ -20,7 +21,7 @@ class VisitorsController < ApplicationController
        },
         detection_attributes: ["ALL"]
      })
-   obj.upload_file(image)
+  
    puts response
    render :json => response.face_records.to_json
   end
