@@ -7,7 +7,7 @@ class VisitorsController < ApplicationController
    image=params[:img]
    s3 = Aws::S3::Resource.new(region: 'eu-west-1')
    obj = s3.bucket('jcristanreko01').object('javier4.jpg')
-   #obj.upload_file(image)
+   obj.upload_file(image)
 
    image=image.gsub("data:image/jpeg;base64,", "")
    name = params[:name]
