@@ -5,9 +5,9 @@ class VisitorsController < ApplicationController
    #Test if collection exists
    client = Aws::Rekognition::Client.new()
    image=params[:img]
-   service = AWS::S3.new(region: 'eu-west-1')
-   obj = s3.bucket('jcristanreko01').object('javier4.jpg')
-   obj.upload_file(image)
+   #service = AWS::S3.new(region: 'eu-west-1')
+   #obj = s3.bucket('jcristanreko01').object('javier4.jpg')
+   #obj.upload_file(image)
 
    image=image.gsub("data:image/jpeg;base64,", "")
    name = params[:name]
